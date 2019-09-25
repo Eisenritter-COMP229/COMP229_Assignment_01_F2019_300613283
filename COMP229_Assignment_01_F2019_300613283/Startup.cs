@@ -25,8 +25,10 @@ namespace COMP229_Assignment_01_F2019_300613283
             {
                 app.UseDeveloperExceptionPage();
             }
+
             //wwwroot folder
             app.UseStaticFiles();
+
             app.UseMvcWithDefaultRoute();
         }
     }

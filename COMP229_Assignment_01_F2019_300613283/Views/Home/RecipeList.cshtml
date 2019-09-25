@@ -1,15 +1,29 @@
 ﻿
 @{
-    Layout = null;
+    ViewBag.Title = "List of Recipes";
 }
 
-<!DOCTYPE html>
+<div class="panel-body">
+    <h1>Here are George's Recipes</h1>
+    <table class="table table-sm table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>ID</th>
+            </tr>
+        </thead>
+        <tbody>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Recipe List</title>
-</head>
-<body>
-</body>
-</html>
+            @foreach (Recipe r in Model)
+            {
+                <tr>
+                    <td>@r.Name</td>
+                    <td>@r.Description</td>
+                    <td>@r.ID</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<p><a class="nav-link" asp-action="Index">Click here</a> to go back to the Home Page</p>

@@ -17,7 +17,7 @@ namespace COMP229_Assignment_01_F2019_300613283.Controllers
 
         public ViewResult RecipeList()
         {
-            return View();
+            return View(Models.RecipeList.Recipes);
         }
 
         public ViewResult ViewRecipe()
@@ -41,8 +41,8 @@ namespace COMP229_Assignment_01_F2019_300613283.Controllers
         {
             if (ModelState.IsValid)
             {
-               RecipeListRepo.AddRecipe(recipe);
-               return View();
+               Models.RecipeList.AddRecipe(recipe);
+               return View("ViewRecipe",recipe);
             }
             else
             {

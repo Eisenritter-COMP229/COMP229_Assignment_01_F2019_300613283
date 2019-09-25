@@ -1,15 +1,25 @@
-﻿
+﻿@model Recipe
 @{
-    Layout = null;
+    ViewBag.Title = "Recipe";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>View Recipe</title>
-</head>
-<body>
-</body>
-</html>
+<div class="panel-body">
+    <h1>@Model.Name</h1>
+    <table class="table table-sm table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Recipe Name</th>
+                <th>Recipe Description</th>
+                <th>Recipe Ingredients</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>@Model.Name</td>
+                    <td>@Model.Description</td>
+                    <td>@Model.ID</td>
+                </tr>
+        </tbody>
+    </table>
+</div>
+<p><a class="nav-link" asp-action="Index">Click here</a> to go back to the Home Page</p>

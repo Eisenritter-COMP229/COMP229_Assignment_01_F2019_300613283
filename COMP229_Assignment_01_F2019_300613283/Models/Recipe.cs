@@ -11,14 +11,9 @@ namespace COMP229_Assignment_01_F2019_300613283.Models
     {
         [Required(ErrorMessage = "Please enter recipe Name")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "Please enter recipe Description")]
         public string Description { get; set; }
-        public Image Image { get; set; }
-        private static List<Ingredient> ingredients = new List<Ingredient>(); 
-        
-        public static void AddIngredient(Ingredient ingredient)
-        {
-            ingredients.Add(ingredient);
-        }
-  
+        public string ImagePath { get; set; }
+        public int ID { get; set; }
     }
 }
