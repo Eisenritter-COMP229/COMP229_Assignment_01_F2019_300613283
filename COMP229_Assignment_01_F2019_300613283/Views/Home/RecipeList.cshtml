@@ -18,7 +18,7 @@
             @foreach (Recipe r in Model)
             {
                 <tr>
-                    <td>@r.Name</td>
+                    <td><a class="nav-link" asp-action="ViewRecipe" asp-route-ID="@r.ID" >@r.Name</a> </td>
                     <td>@r.Description</td>
                     <td>@r.ID</td>
                 </tr>

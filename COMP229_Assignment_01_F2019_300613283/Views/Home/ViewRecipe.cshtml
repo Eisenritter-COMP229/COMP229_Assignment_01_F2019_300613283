@@ -3,23 +3,61 @@
     ViewBag.Title = "Recipe";
 }
 
-<div class="panel-body">
-    <h1>@Model.Name</h1>
-    <table class="table table-sm table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>Recipe Name</th>
-                <th>Recipe Description</th>
-                <th>Recipe Ingredients</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="panel-body">
+        <h1>@Model.Name</h1>
+        <table class="table table-sm table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Recipe Name</th>
+                    <th>Recipe Description</th>
+                </tr>
+            </thead>
+            <tbody>
                 <tr>
                     <td>@Model.Name</td>
                     <td>@Model.Description</td>
-                    <td>@Model.ID</td>
                 </tr>
-        </tbody>
-    </table>
-</div>
-<p><a class="nav-link" asp-action="Index">Click here</a> to go back to the Home Page</p>
+            </tbody>
+        </table>
+        <h2>Ingredients</h2>
+        <table class="table table-sm table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (Ingredient i in Model.Ingredients)
+                {
+                    <tr>
+                        <td>@i.Name</td>
+                        <td>@i.Amount</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <h2>Reviews</h2>
+        <table class="table table-sm table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Reviews</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (Review r in Model.Reviews)
+                {
+                    <tr>
+                        <td>@r.RecipeReview</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <a class="btn btn-default" asp-action="Index">Return to Home Page</a>
+        <a class="btn btn-default" asp-action="ReviewRecipe" asp-route-ID="@Model.ID">Review This Recipe</a>
+        <a class="btn btn-default" asp-action="AddIngredient" asp-route-ID="@Model.ID">Add Ingredient to This Recipe</a>
+    </div>

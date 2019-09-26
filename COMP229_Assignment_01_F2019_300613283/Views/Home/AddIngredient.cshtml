@@ -1,0 +1,23 @@
+﻿@model Ingredient
+
+@{
+    ViewBag.Title = "Add Ingredients";
+}
+
+<div class="panel panel-success">
+    <div class="panel-heading text-center"><h4>Ingredient</h4></div>
+    <div class="panel-body">
+        <form class="p-a-1" asp-action="AddIngredient" method="post">
+            <div asp-validation-summary="All"></div>
+            <div class="form-group">
+                <label asp-for="Name">Ingredient Name:</label>
+                <input class="form-control" asp-for="Name" />
+                <label asp-for="Amount">Ingredient Amount:</label>
+                <input class="form-control" asp-for="Amount" />
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary" type="submit">Add Ingredient</button>
+            </div>
+        </form>
+    </div>
+</div>

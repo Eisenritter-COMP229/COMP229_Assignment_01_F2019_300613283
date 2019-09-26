@@ -25,9 +25,30 @@ namespace COMP229_Assignment_01_F2019_300613283.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ViewResult ViewRecipe(int ID)
+        {
+            return View("ViewRecipe", Models.RecipeList.Recipes.ElementAt<Recipe>(ID));
+        }
+
+
+        [HttpGet]
         public ViewResult ReviewRecipe()
         {
             return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult ReviewRecipe(Review review)
+        {
+            Review newReview = new Review();
+
+            newReview.RecipeReview = (review.RecipeReview);
+
+            Recipe recipe = Models.RecipeList.Recipes.ElementAt(review.ID);
+            recipe.addReview(review);
+            return View("ViewRecipe",recipe);
         }
 
         [HttpGet]
@@ -49,6 +70,46 @@ namespace COMP229_Assignment_01_F2019_300613283.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public ViewResult AddIngredient()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddIngredient(Ingredient ingredient)
+        {
+            Ingredient newIngredient = new Ingredient();
+            newIngredient.Name = ingredient.Name;
+            ingredient.Amount = ingredient.Amount;
+
+            Recipe recipe = Models.RecipeList.Recipes.ElementAt(ingredient.ID);
+
+            if (ModelState.IsValid)
+            {
+                recipe.addIngredient(ingredient);
+                return View("ViewRecipe", recipe);
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        //[HttpPost]
+        //public ActionResult ReviewRecipe(Review reviewModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        //Create new review
+        //        Review review1 = new Review();
+        //        //Map new review to model
+        //        review1.RecipeReview = reviewModel.RecipeReview;
+
+        //    }
+        //    return RedirectToAction("ViewRecipe");
+        //}
 
     }
 }

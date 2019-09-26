@@ -15,5 +15,23 @@ namespace COMP229_Assignment_01_F2019_300613283.Models
         public string Description { get; set; }
         public string ImagePath { get; set; }
         public int ID { get; set; }
+
+        public List<Review> Reviews { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
+
+        public Recipe()
+        {
+            this.Ingredients = new List<Ingredient>(this.ID);
+            this.Reviews = new List<Review>(this.ID);
+            this.ID =RecipeList.Recipes.Count();
+        }
+        public void addReview(Review review)
+        {
+            Reviews.Add(review);
+        }
+        public void addIngredient(Ingredient ingredient)
+        {
+            Ingredients.Add(ingredient);
+        }
     }
 }
