@@ -1,0 +1,11 @@
+﻿@*Strong Typed View*@
+@model IEnumerable<Recipe>
+
+@foreach(var r in Model)
+{
+    <div>
+        <h3>@r.Name</h3>
+        @r.Description
+        <h4>@r.Type</h4>
+    </div>
+}

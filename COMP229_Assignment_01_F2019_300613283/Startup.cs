@@ -45,9 +45,12 @@ namespace COMP229_Assignment_01_F2019_300613283
             app.UseStaticFiles();
 
             // Set up the routing of MVC
-            app.UseMvc(route =>
+            app.UseMvc(routes =>
             {
-
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Recipe}/{action=List}/{id?}"
+                    );
             }
             );
 
