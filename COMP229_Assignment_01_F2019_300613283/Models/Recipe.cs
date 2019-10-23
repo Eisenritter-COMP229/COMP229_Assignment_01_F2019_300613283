@@ -9,6 +9,7 @@ namespace COMP229_Assignment_01_F2019_300613283.Models
 {
     public class Recipe
     {
+        // Recipe Model Properties
         [Required(ErrorMessage = "Please enter recipe Name")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Please enter recipe Description")]
