@@ -10,18 +10,20 @@
             <tr>
                 <th>Name</th>
                 <th>Description</th>
-                <th>ID</th>
+                <th>Created By</th>
+                <th>Created On</th>
             </tr>
         </thead>
         <tbody>
 
             @foreach (Recipe r in Model)
             {
-                <tr>
-                    <td><a class="nav-link" asp-action="ViewRecipe" asp-route-ID="@r.ID" >@r.Name</a> </td>
-                    <td>@r.Description</td>
-                    <td>@r.ID</td>
-                </tr>
+            <tr>
+                <td><a class="nav-link" asp-action="ViewRecipe" asp-route-ID="@r.ID">@r.Name</a> </td>
+                <td>@r.Description</td>
+                <td>@r.Creator</td>
+                <td>@r.DateCreated</td>
+            </tr>
             }
         </tbody>
     </table>

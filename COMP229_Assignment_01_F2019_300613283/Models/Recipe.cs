@@ -17,6 +17,8 @@ namespace COMP229_Assignment_01_F2019_300613283.Models
         public string ImagePath { get; set; }
         public int ID { get; set; }
         public string Type { get; set; }
+        public string Creator { get; set; }
+        public DateTime DateCreated { get; set; } = DateTime.Now;
 
         public List<Review> Reviews { get; set; }
         public List<Ingredient> Ingredients { get; set; }

@@ -1,0 +1,5 @@
+﻿.panel > .panel-heading {
+    background-image: none;
+    background-color: Background;
+    color: white;
+}

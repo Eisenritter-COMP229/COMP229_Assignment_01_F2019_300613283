@@ -12,7 +12,7 @@ namespace COMP229_Assignment_01_F2019_300613283.Controllers
     {
         public ViewResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         public ViewResult RecipeList()
@@ -60,9 +60,12 @@ namespace COMP229_Assignment_01_F2019_300613283.Controllers
         [HttpPost]
         public ViewResult AddRecipe(Recipe recipe)
         {
+            Recipe newRecipe = new Recipe();
+            newRecipe = recipe;
+
             if (ModelState.IsValid)
             {
-               Models.RecipeList.AddRecipe(recipe);
+               Models.RecipeList.AddRecipe(newRecipe);
                return View("ViewRecipe",recipe);
             }
             else
@@ -84,12 +87,13 @@ namespace COMP229_Assignment_01_F2019_300613283.Controllers
             newIngredient.Name = ingredient.Name;
             ingredient.Amount = ingredient.Amount;
 
+            //return RedirectToAction("AddRecipe");
             Recipe recipe = Models.RecipeList.Recipes.ElementAt(ingredient.ID);
 
             if (ModelState.IsValid)
             {
                 recipe.addIngredient(ingredient);
-                return View("ViewRecipe", recipe);
+                return View("ViewRecipe",recipe);
             }
             else
             {

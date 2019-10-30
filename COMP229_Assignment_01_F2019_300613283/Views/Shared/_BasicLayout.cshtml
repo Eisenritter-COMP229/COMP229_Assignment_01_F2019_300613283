@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width" />
     <title>George's Recipe</title>
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="~/css/Eisen.css" />
 </head>
 <body>
-    <div>
+    <div class="panel-heading">
+        @{
+            Html.RenderPartial("_HeaderNavBar");
+        }
+    </div>
+    <br />
+    <div class="container body-content">
         @RenderBody()
     </div>
 </body>

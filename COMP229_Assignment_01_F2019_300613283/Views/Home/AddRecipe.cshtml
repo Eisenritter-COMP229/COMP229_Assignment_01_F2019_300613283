@@ -4,21 +4,9 @@
 }
 
 <div class="panel panel-success">
-    <div class="panel-heading text-center"><h4>Recipe</h4></div>
+    <div class="panel-heading text-center"><h4>Add a Recipe</h4></div>
     <div class="panel-body">
-        <form class="p-a-1" asp-action="AddRecipe" method="post">
-            <div asp-validation-summary="All"></div>
-            <div class="form-group">
-                <label asp-for="Name">Recipe Name:</label>
-                <input class="form-control" asp-for="Name" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Description">Description:</label>
-                <input class="form-control" asp-for="Description" />
-            </div>
-            <div class="text-center">
-                <button class="btn btn-primary" type="submit">Add Recipe</button>
-            </div>
-        </form>
+
+        @Html.Partial("_RecipeForm", Model);
     </div>
 </div>
