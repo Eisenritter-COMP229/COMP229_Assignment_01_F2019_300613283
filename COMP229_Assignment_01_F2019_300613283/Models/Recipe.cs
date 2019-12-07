@@ -14,6 +14,9 @@ namespace COMP229_Assignment_01_F2019_300613283.Models
         public string Name { get; set; }
         [Required(ErrorMessage = "Please enter recipe Description")]
         public string Description { get; set; }
+        public int NumOfServings { get; set; }
+        public int PrepTime { get; set; }
+        public int TotalTime { get; set; }
         public int ID { get; set; }
         public string Type { get; set; }
         public string Creator { get; set; }

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace COMP229_Assignment_01_F2019_300613283.Models
 {
+    // Entity Framework Recipe Repository
+    // This is the Repository Class using the Database class
     public class EFRecipeRepository:IRecipeRepository
     {
         private ApplicationDBContext context;
@@ -14,7 +13,7 @@ namespace COMP229_Assignment_01_F2019_300613283.Models
         {
             context = ctx;
         }
-        // Return set of recipes from database
+        // The Recipes are set to the Recipes in the database
         public IQueryable<Recipe> Recipes => context.Recipes;
     }
 }

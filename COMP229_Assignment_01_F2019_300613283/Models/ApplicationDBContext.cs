@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-// This Class allows this to connect with the database
+
 namespace COMP229_Assignment_01_F2019_300613283.Models
 {
+    // This is the Database Class to be used by the Repository Class
     public class ApplicationDBContext : DbContext
     {
         // Constructor

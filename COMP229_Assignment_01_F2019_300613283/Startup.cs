@@ -3,12 +3,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 namespace COMP229_Assignment_01_F2019_300613283
 {
     public class Startup
     {
         // public property
+        // This Property store the configuration from appsettings
         public IConfiguration Configuration { get; }
 
         // Constructor
@@ -18,10 +20,12 @@ namespace COMP229_Assignment_01_F2019_300613283
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //Dependency Injection
+            // Setup the database connection
+            services.AddDbContext<ApplicationDBContext>(options =>
+                options.UseSqlServer(Configuration["Data:Assignment1Recipes:ConnectionString"]));
 
             //Everytime time IRecipeRepository is called, it will create the FakeRecipeRepository
-            services.AddTransient<IRecipeRepository, FakeRecipeRepository>();
+            services.AddTransient<IRecipeRepository, EFRecipeRepository>();
             services.AddMvc();
 
         }
@@ -47,8 +51,11 @@ namespace COMP229_Assignment_01_F2019_300613283
                     name: "default",
                     template: "{controller=Recipe}/{action=List}/{id?}"
                     );
-            }
+                }
             );
+            
+            // Send the database to the app
+            SeedData.EnsurePopulated(app);
 
             //app.UseMvcWithDefaultRoute();
         }
