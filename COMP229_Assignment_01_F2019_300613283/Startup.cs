@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using COMP229_Assignment_01_F2019_300613283.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore;
-using COMP229_Assignment_01_F2019_300613283.Models;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace COMP229_Assignment_01_F2019_300613283
 {
@@ -25,6 +19,8 @@ namespace COMP229_Assignment_01_F2019_300613283
         public void ConfigureServices(IServiceCollection services)
         {
             //Dependency Injection
+
+            //Everytime time IRecipeRepository is called, it will create the FakeRecipeRepository
             services.AddTransient<IRecipeRepository, FakeRecipeRepository>();
             services.AddMvc();
 
@@ -45,16 +41,16 @@ namespace COMP229_Assignment_01_F2019_300613283
             app.UseStaticFiles();
 
             // Set up the routing of MVC
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(
-            //        name: "default",
-            //        template: "{controller=Recipe}/{action=List}/{id?}"
-            //        );
-            //}
-            //);
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Recipe}/{action=List}/{id?}"
+                    );
+            }
+            );
 
-            app.UseMvcWithDefaultRoute();
+            //app.UseMvcWithDefaultRoute();
         }
     }
 }
